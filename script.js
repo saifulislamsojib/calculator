@@ -20,8 +20,5 @@ allClear.addEventListener('click', () => {
     currentOperand.innerText = '';
 })
 backDelete.addEventListener('click', () => {
-    const array = currentOperand.innerText.split('');
-    array.pop();
-    const str = array.join('');
-    currentOperand.innerText = str;
+    currentOperand.innerText = currentOperand.innerText.slice(0, -1);
 })
