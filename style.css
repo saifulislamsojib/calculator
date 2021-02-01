@@ -11,8 +11,8 @@ body {
   align-content: center;
   justify-content: center;
   min-height: 100vh;
-  grid-template-columns: repeat(4, 5.8rem);
-  grid-template-rows: repeat(6, 5.8rem);
+  grid-template-columns: repeat(4, 6rem);
+  grid-template-rows: repeat(6, 6rem);
 }
 .grid-calculator button {
   border: 1px solid white;
@@ -35,4 +35,10 @@ body {
   align-items: center;
   overflow: hidden;
   padding: 5px;
+}
+@media (max-width: 480px) {
+  .grid-calculator {
+    grid-template-columns: repeat(4, 5rem);
+    grid-template-rows: repeat(6, 5rem);
+  }
 }
