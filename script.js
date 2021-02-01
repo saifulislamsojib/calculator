@@ -31,7 +31,7 @@ const numberClick = (number) => {
 });
 [...operations].map(operation => {
     operation.addEventListener('click', () => {
-        currentOperand.innerText = withOutEval() || currentOperand.innerText;
+        currentOperand.innerText = withOutEval() ?? currentOperand.innerText;
         if (currentOperand.innerText) {
             previousOperand.innerText = currentOperand.innerText;
             previousOperand.innerText += operation.innerText;
@@ -63,7 +63,7 @@ const withOutEval = () => {
     }
 }
 equalOperation.addEventListener('click', () => {
-    currentOperand.innerText = withOutEval() || currentOperand.innerText;
+    currentOperand.innerText = withOutEval() ?? currentOperand.innerText;
     if (currentOperand.innerText) {
         previousOperand.innerText = '';
     }
