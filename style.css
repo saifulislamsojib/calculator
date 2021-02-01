@@ -41,6 +41,9 @@ body {
 .current-operand {
   font-size: 3rem;
 }
+#size {
+  font-size: 2.3rem;
+}
 @media (max-width: 480px) {
   .grid-calculator {
     grid-template-columns: repeat(4, 5rem);
@@ -50,6 +53,9 @@ body {
     font-size: 1.6rem;
   }
   .current-operand {
-    font-size: 2.7rem;
+    font-size: 2.65rem;
+  }
+  #size {
+    font-size: 2rem;
   }
 }
