@@ -73,7 +73,12 @@ equalOperation.addEventListener('click', () => {
 })
 point.addEventListener('click', () => {
     if (currentOperand.innerText.indexOf('.') == -1) {
-        numberClick(point);
+        if (!currentOperand.innerText) {
+            currentOperand.innerText += 0 + point.innerText;
+        }
+        else {
+            numberClick(point);
+        }
     }
 })
 allClear.addEventListener('click', () => {
