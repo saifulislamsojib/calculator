@@ -82,7 +82,14 @@ allClear.addEventListener('click', () => {
     currentOperand.removeAttribute("id", '');
 })
 backDelete.addEventListener('click', () => {
-    currentOperand.innerText = currentOperand.innerText.slice(0, -1);
+    if (!currentOperand.innerText) {
+        const previous = previousOperand.innerText.slice(0, -1);
+        currentOperand.innerText = previous;
+        previousOperand.innerText = "";
+    }
+    else{
+        currentOperand.innerText = currentOperand.innerText.slice(0, -1);
+    }
     if (currentOperand.innerText.length <= 14){
         currentOperand.removeAttribute("id", "");
     }
