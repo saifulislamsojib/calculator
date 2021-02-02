@@ -20,10 +20,10 @@ const numberClick = (number) => {
             if (currentOperand.innerText === "0"){
                 currentOperand.innerText = "";
             }
-            if (currentOperand.innerText.length === 14){
+            if (currentOperand.innerText.length >= 14){
                 currentOperand.setAttribute("id", "size");
             }
-            if (currentOperand.innerText.length !== 19){
+            if (currentOperand.innerText.length < 19){
                 numberClick(number);
             }
         }
@@ -31,7 +31,8 @@ const numberClick = (number) => {
 });
 [...operations].map(operation => {
     operation.addEventListener('click', () => {
-        currentOperand.innerText = withOutEval() ?? currentOperand.innerText;
+        currentOperand.innerText = calculation() ?? currentOperand.innerText;
+        currentOperand.removeAttribute("id", "");
         if (currentOperand.innerText) {
             previousOperand.innerText = currentOperand.innerText;
             previousOperand.innerText += operation.innerText;
@@ -45,25 +46,27 @@ const numberClick = (number) => {
         }
     })
 })
-const withOutEval = () => {
+const calculation = () => {
     const previous = parseFloat(previousOperand.innerText.slice(0, -1));
     const current = parseFloat(currentOperand.innerText);
     const operator = previousOperand.innerText.split(previous)[1];
-    if (operator === "+") {
-        return previous + current;
-    }
-    else if (operator === "-") {
-        return previous - current;
-    }
-    else if (operator === "*") {
-        return previous * current;
-    }
-    else if (operator === "÷") {
-        return previous / current;
+    if (currentOperand.innerText) {
+        if (operator === "+") {
+            return previous + current;
+        }
+        else if (operator === "-") {
+            return previous - current;
+        }
+        else if (operator === "*") {
+            return previous * current;
+        }
+        else if (operator === "÷") {
+            return previous / current;
+        }
     }
 }
 equalOperation.addEventListener('click', () => {
-    currentOperand.innerText = withOutEval() ?? currentOperand.innerText;
+    currentOperand.innerText = calculation() ?? currentOperand.innerText;
     if (currentOperand.innerText) {
         previousOperand.innerText = '';
     }
@@ -80,7 +83,7 @@ allClear.addEventListener('click', () => {
 })
 backDelete.addEventListener('click', () => {
     currentOperand.innerText = currentOperand.innerText.slice(0, -1);
-    if (currentOperand.innerText.length === 14){
+    if (currentOperand.innerText.length <= 14){
         currentOperand.removeAttribute("id", "");
     }
 })
